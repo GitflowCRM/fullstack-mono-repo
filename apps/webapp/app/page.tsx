@@ -1,4 +1,6 @@
+'use client';
 import styles from './page.module.css';
+import SharedButton from 'packages/ui/src/lib/button.shared';
 
 export default function Index() {
   /*
@@ -16,6 +18,11 @@ export default function Index() {
               Welcome webapp 👋
             </h1>
           </div>
+
+          <SharedButton
+            title="I am a native shared button"
+            onPress={() => alert('I am a native shared button')}
+          />
 
           <div id="hero" className="rounded">
             <div className="text-container">

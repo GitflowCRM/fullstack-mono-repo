@@ -1,4 +1,6 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
+
+import SharedButton from 'packages/ui/src/lib/button.shared';
 import React, { useRef, useState } from 'react';
 import {
   SafeAreaView,
@@ -9,6 +11,7 @@ import {
   StatusBar,
   TouchableOpacity,
   Linking,
+  Alert,
 } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
 
@@ -41,6 +44,12 @@ export const App = () => {
               Welcome Mobileapp 👋
             </Text>
           </View>
+
+          <SharedButton
+            title="I am a native shared button"
+            onPress={() => Alert.alert('I am a native shared button')}
+          />
+
           <View style={styles.section}>
             <View style={styles.hero}>
               <View style={styles.heroTitle}>

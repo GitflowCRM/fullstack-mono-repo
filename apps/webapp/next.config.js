@@ -12,6 +12,26 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  transpilePackages: [
+    'react-native',
+    'react-native-web',
+    // Add any other React Native packages you're using
+  ],
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      'react-native$': 'react-native-web',
+    };
+    config.resolve.extensions = [
+      '.web.js',
+      '.js',
+      '.web.ts',
+      '.ts',
+      '.web.tsx',
+      '.tsx',
+    ];
+    return config;
+  },
 };
 
 const plugins = [
