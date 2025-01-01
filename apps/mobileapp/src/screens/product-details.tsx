@@ -1,11 +1,17 @@
-'use client';
-
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { Share2, MoreVertical, Star, ChevronRight } from 'lucide-react';
-
+import {
+  Share2,
+  MoreVertical,
+  Star,
+  ChevronRight,
+  ShoppingCart,
+} from 'lucide-react-native';
+import { ImageGallery } from 'packages/ui/src/lib/image-gallery';
+import { SizeSelector } from 'packages/ui/src/lib/size-selector';
+import { ColorSelector } from 'packages/ui/src/lib/color-selector';
 import { RatingBars } from 'packages/ui/src/lib/rating-bars';
-import { ProductCard } from 'packages/ui/src/lib/product-card/product-card.web';
+import { ProductCard } from 'packages/ui/src/lib/product-card';
 
 const productImages = [
   'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-7lF73yPvTUHp8DN1zXeCPOzlIpoUMz.png',
@@ -59,6 +65,7 @@ export default function ProductDetailsScreen() {
     <View className="flex-1 justify-center bg-gray-100">
       <View className="w-full overflow-hidden rounded-xl bg-[#181a20]">
         <View className="relative h-[844px] overflow-hidden">
+          {/* Header */}
           <View className="flex-row items-center justify-between p-4 absolute top-0 left-0 right-0 z-10">
             <TouchableOpacity className="p-2">
               <ChevronRight
@@ -80,8 +87,9 @@ export default function ProductDetailsScreen() {
 
           <ScrollView className="h-[844px]">
             <View className="px-3 pt-16">
-              {/* <ImageGallery images={productImages} /> */}
+              <ImageGallery images={productImages} />
 
+              {/* Product Info */}
               <View className="mt-6">
                 <Text className="text-xl font-semibold mb-2 text-white">
                   Urban Blend Long Sleeve Shirt
@@ -95,7 +103,7 @@ export default function ProductDetailsScreen() {
                   </Text>
                 </View>
 
-                {/* <SizeSelector
+                <SizeSelector
                   sizes={sizes}
                   selectedSize={selectedSize}
                   onSelectSize={setSelectedSize}
@@ -105,18 +113,19 @@ export default function ProductDetailsScreen() {
                   colors={colors}
                   selectedColor={selectedColor}
                   onSelectColor={setSelectedColor}
-                /> */}
+                />
 
-                {/* <TouchableOpacity className="w-full bg-[#528f65] py-6 rounded-lg mb-6 flex-row items-center justify-center">
+                <TouchableOpacity className="w-full bg-[#528f65] py-6 rounded-lg mb-6 flex-row items-center justify-center">
                   <ShoppingCart
                     color="white"
                     size={20}
                     style={{ marginRight: 8 }}
                   />
                   <Text className="text-white font-semibold">Add to Cart</Text>
-                </TouchableOpacity> */}
+                </TouchableOpacity>
 
-                {/* <View className="space-y-4 mb-6">
+                {/* Product Information */}
+                <View className="space-y-4 mb-6">
                   <Text className="text-lg font-semibold text-white">
                     Product Information
                   </Text>
@@ -137,16 +146,18 @@ export default function ProductDetailsScreen() {
                       </View>
                     ))}
                   </View>
-                </View> */}
+                </View>
 
-                {/* <Text className="text-sm text-gray-300 mb-6">
+                {/* Description */}
+                <Text className="text-sm text-gray-300 mb-6">
                   Elevate your style with the Urban Blend Long Sleeve Shirt, a
                   perfect blend of urban sophistication and contemporary
                   comfort. Crafted with meticulous attention to detail, this
                   shirt is designed to make a statement in any setting.{' '}
                   <Text className="text-[#528f65]">read more...</Text>
-                </Text> */}
+                </Text>
 
+                {/* Ratings & Reviews */}
                 <View className="mb-6">
                   <View className="flex-row items-center justify-between mb-4">
                     <Text className="text-lg font-semibold text-white">
@@ -179,6 +190,7 @@ export default function ProductDetailsScreen() {
                     <RatingBars ratings={ratings} totalRatings={227} />
                   </View>
 
+                  {/* Review Examples */}
                   <View className="space-y-4">
                     <View className="p-4 rounded-lg bg-[#1a1f24]">
                       <View className="flex-row items-center gap-3 mb-2">
@@ -227,6 +239,7 @@ export default function ProductDetailsScreen() {
                   </View>
                 </View>
 
+                {/* You May Also Like */}
                 <View className="mb-6">
                   <View className="flex-row items-center justify-between mb-4">
                     <Text className="text-lg font-semibold text-white">

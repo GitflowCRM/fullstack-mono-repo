@@ -1,6 +1,8 @@
 const { withNxMetro } = require('@nx/react-native');
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 
+const { withNativeWind } = require('nativewind/metro');
+
 const defaultConfig = getDefaultConfig(__dirname);
 const { assetExts, sourceExts } = defaultConfig.resolver;
 
@@ -21,12 +23,27 @@ const customConfig = {
   },
 };
 
-module.exports = withNxMetro(mergeConfig(defaultConfig, customConfig), {
-  // Change this to true to see debugging info.
-  // Useful if you have issues resolving modules
-  debug: false,
-  // all the file extensions used for imports other than 'ts', 'tsx', 'js', 'jsx', 'json'
-  extensions: [],
-  // Specify folders to watch, in addition to Nx defaults (workspace libraries and node_modules)
-  watchFolders: ['../../packages/ui'],
-});
+// OLD with out nativewind
+// module.exports = withNxMetro(mergeConfig(defaultConfig, customConfig), {
+//   // Change this to true to see debugging info.
+//   // Useful if you have issues resolving modules
+//   debug: false,
+//   // all the file extensions used for imports other than 'ts', 'tsx', 'js', 'jsx', 'json'
+//   extensions: [],
+//   // Specify folders to watch, in addition to Nx defaults (workspace libraries and node_modules)
+//   watchFolders: ['../../packages/ui'],
+// });
+
+async function createConfig() {
+  const nxConfig = await withNxMetro(mergeConfig(defaultConfig, customConfig), {
+    debug: false,
+    extensions: [],
+    watchFolders: ['../../packages/ui'],
+  });
+
+  return withNativeWind(nxConfig, {
+    input: './global.css',
+  });
+}
+
+module.exports = createConfig();

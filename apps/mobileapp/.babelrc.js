@@ -1,10 +1,21 @@
 module.exports = function (api) {
   api.cache(true);
 
-  if (
+  const isBuildOrStorybook =
     process.env.NX_TASK_TARGET_TARGET === 'build' ||
-    process.env.NX_TASK_TARGET_TARGET?.includes('storybook')
-  ) {
+    process.env.NX_TASK_TARGET_TARGET?.includes('storybook');
+
+  const commonPlugins = [
+    [
+      '@babel/plugin-transform-react-jsx',
+      {
+        runtime: 'automatic',
+        importSource: 'nativewind', // Set jsxImportSource for NativeWind
+      },
+    ],
+  ];
+
+  if (isBuildOrStorybook) {
     return {
       presets: [
         [
@@ -14,12 +25,12 @@ module.exports = function (api) {
           },
         ],
       ],
+      plugins: commonPlugins,
     };
   }
 
   return {
-    presets: [
-      ['module:@react-native/babel-preset', { useTransformReactJSX: true }],
-    ],
+    presets: ['module:@react-native/babel-preset'],
+    plugins: commonPlugins,
   };
 };
