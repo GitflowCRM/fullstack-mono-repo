@@ -14,10 +14,17 @@ import {
   Alert,
 } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
+import { verifyInstallation } from 'nativewind';
+
+import '../../global.css';
+import ProductDetailsScreen from '../screens/product-details';
 
 export const App = () => {
+  verifyInstallation();
   const [whatsNextYCoord, setWhatsNextYCoord] = useState<number>(0);
   const scrollViewRef = useRef<null | ScrollView>(null);
+
+  return <ProductDetailsScreen />;
 
   return (
     <>
@@ -49,6 +56,10 @@ export const App = () => {
             title="I am a native shared button"
             onPress={() => Alert.alert('I am a native shared button')}
           />
+
+          <View className="flex-1 justify-center items-center bg-red-500 mx-20">
+            <Text className="text-white">Hello World</Text>
+          </View>
 
           <View style={styles.section}>
             <View style={styles.hero}>
