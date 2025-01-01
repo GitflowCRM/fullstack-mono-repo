@@ -10,5 +10,11 @@
     "react-native": "*",
     "react-native-svg": "*",
     "metro-config": "*"
+  },
+  "scripts": {
+    "ios:iphone15": "nx run mobileapp:run-ios --simulator=\"iPhone 15\"",
+    "ios:iphone14": "nx run mobileapp:run-ios --simulator=\"iPhone 14\"",
+    "ios:ipad": "nx run mobileapp:run-ios --simulator=\"iPad Pro (12.9-inch) (6th generation)\"",
+    "ios:list-devices": "xcrun simctl list devices"
   }
 }
