@@ -7,11 +7,11 @@ import {
   ChevronRight,
   ShoppingCart,
 } from 'lucide-react-native';
-import { ImageGallery } from '../ui/image-gallery';
-import { SizeSelector } from '../ui/size-selector';
-import { ColorSelector } from '../ui/color-selector';
-import { RatingBars } from '../ui/rating-bars';
-import { ProductCard } from '../ui/product-card';
+import { ImageGallery } from 'packages/ui/src/lib/image-gallery';
+import { SizeSelector } from 'packages/ui/src/lib/size-selector';
+import { ColorSelector } from 'packages/ui/src/lib/color-selector';
+import { RatingBars } from 'packages/ui/src/lib/rating-bars';
+import { ProductCard } from 'packages/ui/src/lib/product-card';
 
 const productImages = [
   'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-7lF73yPvTUHp8DN1zXeCPOzlIpoUMz.png',

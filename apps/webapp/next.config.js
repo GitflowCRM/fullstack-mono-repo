@@ -15,6 +15,9 @@ const nextConfig = {
   transpilePackages: [
     'react-native',
     'react-native-web',
+    'nativewind',
+    'react-native-css-interop',
+
     // Add any other React Native packages you're using
   ],
   webpack: (config) => {

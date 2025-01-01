@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  Platform,
-  View,
-} from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
 
 type SharedButtonProps = {
   title: string;
@@ -14,30 +8,15 @@ type SharedButtonProps = {
 
 const SharedButton: React.FC<SharedButtonProps> = ({ title, onPress }) => {
   return (
-    <View style={{ paddingHorizontal: 20, marginVertical: 20 }}>
+    <View className="px-10 py-5">
       <TouchableOpacity
-        style={[styles.button, Platform.OS === 'web' && styles.webButton]}
+        className="bg-blue-700 rounded-md p-2"
         onPress={onPress}
       >
-        <Text style={styles.text}>{title}</Text>
+        <Text className="text-white text-center">{title}</Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  button: {
-    padding: 10,
-    backgroundColor: '#007bff',
-    borderRadius: 5,
-  },
-  webButton: {
-    cursor: 'pointer',
-  },
-  text: {
-    color: '#fff',
-    textAlign: 'center',
-  },
-});
 
 export default SharedButton;
