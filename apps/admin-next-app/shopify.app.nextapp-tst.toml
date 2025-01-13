@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "e61ed2b560298a1a44c18c87fd785254"
+application_url = "https://idaho-horizontal-sic-block.trycloudflare.com"
+embedded = true
+name = "nextapp-tst"
+handle = "nextapp-tst"
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "gitspark-perfumez-demo.myshopify.com"
+
+[webhooks]
+api_version = "2025-01"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = ""
+
+[auth]
+redirect_urls = [
+  "https://idaho-horizontal-sic-block.trycloudflare.com/auth/callback",
+  "https://idaho-horizontal-sic-block.trycloudflare.com/auth/shopify/callback",
+  "https://idaho-horizontal-sic-block.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false

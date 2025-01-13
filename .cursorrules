@@ -1,3 +1,50 @@
-this is a monorepo project
-we use nx app to create new apps
-apps ---> mobileapp
+this is next js app in a monorepo project
+
+folder structure is as follows
+
+
+fullstack-mono-repo
+├── .nx
+├── .shopify
+├── .vscode
+├── apps
+│   └── admin-next-app
+│       ├── .next
+│       ├── .shopify
+│       ├── .tamagui
+│       ├── .vscode
+│       ├── app
+│       ├── helpers
+│       ├── hooks
+│       ├── lib
+│       ├── prisma
+│       ├── providers
+│       ├── public
+│       ├── types
+│       ├── .env
+│       ├── .eslintrc.json
+│       ├── .gitignore
+│       ├── .graphlrc.ts
+│       ├── .npmrc
+│       ├── bun.lockb
+│       ├── docker-compose.yml
+│       ├── middleware.ts
+│       ├── next-env.d.ts
+│       ├── next.config.js
+│       ├── package.json
+│       ├── pnpm-workspace.yaml
+│       ├── postcss.config.js
+│       ├── README.md
+│       ├── shopify.app.nextapp-tst.toml
+│       ├── shopify.app.toml
+│       └── shopify.web.toml
+├── .editorconfig
+├── .eslintrc
+├── .gitignore
+├── .prettierrc
+├── .env
+├── README.md
+├── pnpm-workspace.yaml
+└── TODO.md
+
+We are using next js 14.1.3 with app router
