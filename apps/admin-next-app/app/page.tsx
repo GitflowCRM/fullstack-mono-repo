@@ -1,6 +1,6 @@
 import { performChecks } from "@/lib/shopify/shopify-oauth";
-import Home from "./components/main-page";
-import { ExitClient } from "./components/exit-client";
+import Home from "@/components/main-page";
+import { ExitClient } from "@/components/exit-client";
 
 export default async function Page({
   params,

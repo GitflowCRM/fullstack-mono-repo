@@ -8,7 +8,6 @@ import {
 import { DROPPABLE_ID } from "@/lib/const";
 import type { AppDispatch, RootState } from "@/lib/store/store";
 import { useDispatch, useSelector } from "react-redux";
-
 import EditorLayout from "@/components/layouts/editor.layout";
 
 import BlocksPicker from "@/components/ui/editor/blocks-picker";
@@ -19,10 +18,25 @@ import {
   reorderComponents,
 } from "@/lib/store/reducers/dnd.slice";
 import type { DnDComponent } from "@/lib/store/reducers/dnd.slice";
+import { useFetchThemeByIdQuery } from "@/lib/api/cms-api";
+import { useEffect } from "react";
+import { setActiveTheme } from "@/lib/store/reducers/theme.slice";
 
-export default function ThemeEditor() {
+export default function ThemeEditor({ params }: { params: { id: string } }) {
+  const themeId = params.id;
+
+  const { data: theme, error } = useFetchThemeByIdQuery(Number(themeId), {
+    skip: !themeId,
+  });
+
   const uiBlocks = useSelector((state: RootState) => state.uiBlocks.blocks);
   const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    if (theme) {
+      dispatch(setActiveTheme(theme));
+    }
+  }, [theme, dispatch]);
 
   const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;

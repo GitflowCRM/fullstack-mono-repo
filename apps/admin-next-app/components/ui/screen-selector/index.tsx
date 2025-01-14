@@ -68,7 +68,7 @@ export default function ScreenSelector() {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const params = useParams();
-  const themeId = params.themeId;
+  const themeId = params.id;
   const uiBlocks = useSelector((state: RootState) => state.uiBlocks.blocks);
 
   const { data: screensResponse } = useFetchScreensQuery(

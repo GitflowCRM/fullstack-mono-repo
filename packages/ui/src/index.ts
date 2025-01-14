@@ -1,2 +1,3 @@
 export * from './lib/ui';
-export * from './lib/button.shared';
+export { default as Button } from './lib/button.shared';
+export { default as SharedButton } from './lib/button.shared';

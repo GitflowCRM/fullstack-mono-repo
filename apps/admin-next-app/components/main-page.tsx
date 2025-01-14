@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { graphql } from "@/lib/gql";
-import { useLazyQuery } from "@apollo/client";
-import { useAppBridge } from "@shopify/app-bridge-react";
-import { Button, LegacyCard as Card, Page, Text } from "@shopify/polaris";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { doServerAction, doTokenExchange } from "../actions";
+import { graphql } from '@/lib/gql';
+import { useLazyQuery } from '@apollo/client';
+import { useAppBridge } from '@shopify/app-bridge-react';
+import { Button, LegacyCard as Card, Page, Text } from '@shopify/polaris';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { doServerAction, doTokenExchange } from '@/components/actions';
 
 interface Data {
   name: string;
@@ -31,11 +31,11 @@ interface ShopData {
 export default function Home({ shop }: { shop: string }) {
   const [data, setData] = useState<Data | null>(null);
   const [serverActionResult, setServerActionResult] = useState<{
-    status: "success" | "error";
+    status: 'success' | 'error';
   }>();
   const [graphqlData, setGraphglData] = useState<ShopData | null>(null);
   const [getShop] = useLazyQuery(GET_SHOP, {
-    fetchPolicy: "network-only",
+    fetchPolicy: 'network-only',
   });
 
   const app = useAppBridge();
@@ -44,17 +44,17 @@ export default function Home({ shop }: { shop: string }) {
     app.idToken().then((token) => {
       // store the token in our database automatically
       doTokenExchange(shop, token, false).then(() => {
-        console.log("Token stored");
+        console.log('Token stored');
       });
     });
   }, [app, shop]);
 
   const handleGetAPIRequest = async () => {
     try {
-      console.log("Calling API");
+      console.log('Calling API');
       // global fetch has tokens automatically added
       // https://shopify.dev/docs/api/app-bridge-library/apis/resource-fetching
-      const response = await fetch("/api/hello");
+      const response = await fetch('/api/hello');
       const result = (await response.json()) as { data: Data };
       setData(result.data);
     } catch (err) {
@@ -73,7 +73,7 @@ export default function Home({ shop }: { shop: string }) {
         sectioned
         title="NextJs API Routes"
         primaryFooterAction={{
-          content: "Call API",
+          content: 'Call API',
           onAction: handleGetAPIRequest,
         }}
       >
@@ -92,10 +92,10 @@ export default function Home({ shop }: { shop: string }) {
         sectioned
         title="React server actions"
         primaryFooterAction={{
-          content: "Server action",
+          content: 'Server action',
           onAction: async () => {
             const token = await app.idToken();
-            console.log("token", token);
+            console.log('token', token);
             const response = await doServerAction(token);
             setServerActionResult(response);
           },
@@ -105,12 +105,12 @@ export default function Home({ shop }: { shop: string }) {
           Call a server action from within your app. The request is verified
           using session tokens.
         </Text>
-        {serverActionResult && serverActionResult.status === "success" && (
+        {serverActionResult && serverActionResult.status === 'success' && (
           <Text as="h1" variant="headingSm">
             Server action was successful.
           </Text>
         )}
-        {serverActionResult && serverActionResult.status === "error" && (
+        {serverActionResult && serverActionResult.status === 'error' && (
           <Text as="h1" variant="headingSm">
             Server action failed.
           </Text>
@@ -121,7 +121,7 @@ export default function Home({ shop }: { shop: string }) {
         sectioned
         title="Use Apollo Client to query Shopify GraphQL"
         primaryFooterAction={{
-          content: "GraphQL Query",
+          content: 'GraphQL Query',
           onAction: async () => {
             try {
               const { data, error } = await getShop();
@@ -159,8 +159,8 @@ export default function Home({ shop }: { shop: string }) {
         </Text>
         <Button
           onClick={async () => {
-            const res = await fetch("shopify:admin/api/graphql.json", {
-              method: "POST",
+            const res = await fetch('shopify:admin/api/graphql.json', {
+              method: 'POST',
               body: JSON.stringify({
                 query: `
                 query {

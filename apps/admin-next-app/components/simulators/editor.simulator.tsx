@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { Box } from '@shopify/polaris';
 import styles from './mobile-simulator.module.css';
 import { useEffect } from 'react';
@@ -15,20 +15,30 @@ import { setVendorBlocks } from '@/lib/store/reducers/vendor-blocks.slice';
 import SimulatorPlaceholder from './simulator-placeholder';
 import ScreenSelector from '../ui/screen-selector';
 import SimulatorScreenWrapper from '../simulator-screen-wrapper';
-import { addComponent, resetComponents, type DnDComponent } from '@/lib/store/reducers/dnd.slice';
+import {
+  addComponent,
+  resetComponents,
+  type DnDComponent,
+} from '@/lib/store/reducers/dnd.slice';
 
 export default function EditorSimulator() {
   const dispatch = useDispatch<AppDispatch>();
-  const droppedComponents = useSelector((state: RootState) => state.dnd.droppedComponents);
+  const droppedComponents = useSelector(
+    (state: RootState) => state.dnd.droppedComponents
+  );
 
-  const currentScreen = useSelector((state: RootState) => state.theme.currentScreen);
-  const themeId = useSelector((state: RootState) => state.theme.activeTheme?.id);
+  const currentScreen = useSelector(
+    (state: RootState) => state.theme.currentScreen
+  );
+  const themeId = useSelector(
+    (state: RootState) => state.theme.activeTheme?.id
+  );
 
   const { data, error, refetch, isLoading } = useFetchVendorBlocksQuery(
     { themeId: Number(themeId), screenId: Number(currentScreen?.id) },
     {
       skip: !currentScreen?.id || !themeId,
-    },
+    }
   );
 
   useEffect(() => {
@@ -55,7 +65,7 @@ export default function EditorSimulator() {
             config: block.config,
             index: block.order,
             ...block.ui_block,
-          }),
+          })
         );
       }
 
@@ -103,11 +113,20 @@ export default function EditorSimulator() {
                 <div ref={provided.innerRef} {...provided.droppableProps}>
                   <SimulatorScreenWrapper>
                     {droppedComponents?.length > 0 ? (
-                      droppedComponents?.map((item: DnDComponent, index: number) => (
-                        <SimulatorItem key={item?.id} index={index} item={item} />
-                      ))
+                      droppedComponents?.map(
+                        (item: DnDComponent, index: number) => (
+                          <SimulatorItem
+                            key={item?.id}
+                            index={index}
+                            item={item}
+                          />
+                        )
+                      )
                     ) : (
-                      <SimulatorPlaceholder index={0} id={DROPPABLE_ID.MOBILE_SIMULATOR} />
+                      <SimulatorPlaceholder
+                        index={0}
+                        id={DROPPABLE_ID.MOBILE_SIMULATOR}
+                      />
                     )}
                   </SimulatorScreenWrapper>
                 </div>

@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "e61ed2b560298a1a44c18c87fd785254"
-application_url = "https://blvd-interested-eagles-achievement.trycloudflare.com"
+application_url = "https://gitspark.ngrok.dev"
 embedded = true
 name = "nextapp-tst"
 handle = "nextapp-tst"
@@ -19,9 +19,9 @@ scopes = ""
 
 [auth]
 redirect_urls = [
-  "https://blvd-interested-eagles-achievement.trycloudflare.com/auth/callback",
-  "https://blvd-interested-eagles-achievement.trycloudflare.com/auth/shopify/callback",
-  "https://blvd-interested-eagles-achievement.trycloudflare.com/api/auth/callback"
+  "https://gitspark.ngrok.dev/auth/callback",
+  "https://gitspark.ngrok.dev/auth/shopify/callback",
+  "https://gitspark.ngrok.dev/api/auth/callback"
 ]
 
 [pos]
